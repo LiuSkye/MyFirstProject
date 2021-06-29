@@ -1,25 +1,63 @@
 {
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++-7 build active file",
+            "command": "start",
+            "args": [
+                "D:/OneDrive/Code/build.bat"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Generated task by Debugger"
+        },
+        // {
+        //     "type": "cppbuild",
+        //     "label": "C/C++: g++.exe 生成活动文件",
+        //     "command": "D:\\OneDrive\\MinGW64\\bin\\g++.exe",
+        //     "args": [
+        //         "-g",
+        //         "${file}",
+        //         "-o",
+        //         "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        //     ],
+        //     "options": {
+        //         "cwd": "${fileDirname}"
+        //     },
+        //     "problemMatcher": [
+        //         "$gcc"
+        //     ],
+        //     "group": "build",
+        //     "detail": "编译器: D:\\OneDrive\\MinGW64\\bin\\g++.exe"
+        // }
+    ],
     "version": "2.0.0",
-    "command": "g++",
-    "args": [
-        "-g",
-        "${fileDirname}\\*.cpp",      //多文件编译
-        "-o",
-        "${fileBasenameNoExtension}.exe"
-    ], // 编译命令参数
-    "problemMatcher": {
-        "owner": "cpp",
-        "fileLocation": [
-            "relative",
-            "${workspaceFolder}"  
-        ],
-        "pattern": {
-            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-            "file": 1,
-            "line": 2,
-            "column": 3,
-            "severity": 4,
-            "message": 5
-        }
-    }
+    
+    // "command": "g++",
+    // "args": [
+    //     "-g",
+    //     "${fileDirname}\\*.cpp",      //多文件编译
+    //     "-o",
+    //     "./build/${fileBasenameNoExtension}.exe"
+    // ], // 编译命令参数
+    // "problemMatcher": {
+    //     "owner": "cpp",
+    //     "fileLocation": [
+    //         "relative",
+    //         "${workspaceFolder}"  
+    //     ],
+    //     "pattern": {
+    //         "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+    //         "file": 1,
+    //         "line": 2,
+    //         "column": 3,
+    //         "severity": 4,
+    //         "message": 5
+    //     }
+    // }
 }

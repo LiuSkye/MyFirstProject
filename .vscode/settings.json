@@ -18,6 +18,14 @@
         "xutility": "cpp",
         "deque": "cpp",
         "iterator": "cpp",
-        "xlocnum": "cpp"
+        "xlocnum": "cpp",
+        "iostream": "cpp",
+        "bitset": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "cstdio": "cpp",
+        "cmath": "cpp",
+        "fstream": "cpp"
     }
 }

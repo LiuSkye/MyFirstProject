@@ -1,0 +1,32 @@
+[
+{
+  "directory": "D:/OneDrive/Code/build",
+  "command": "D:\\OneDrive\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -o CMakeFiles\\LeetCode.dir\\LeetCode\\BinarySearchTree.cpp.obj -c D:\\OneDrive\\Code\\LeetCode\\BinarySearchTree.cpp",
+  "file": "D:/OneDrive/Code/LeetCode/BinarySearchTree.cpp"
+},
+{
+  "directory": "D:/OneDrive/Code/build",
+  "command": "D:\\OneDrive\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -o CMakeFiles\\LeetCode.dir\\LeetCode\\LeetCode.cpp.obj -c D:\\OneDrive\\Code\\LeetCode\\LeetCode.cpp",
+  "file": "D:/OneDrive/Code/LeetCode/LeetCode.cpp"
+},
+{
+  "directory": "D:/OneDrive/Code/build",
+  "command": "D:\\OneDrive\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -o CMakeFiles\\LeetCode.dir\\LeetCode\\solution.cpp.obj -c D:\\OneDrive\\Code\\LeetCode\\solution.cpp",
+  "file": "D:/OneDrive/Code/LeetCode/solution.cpp"
+},
+{
+  "directory": "D:/OneDrive/Code/build",
+  "command": "D:\\OneDrive\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -o CMakeFiles\\DesignMode.dir\\DesignMode\\DesignMode.cpp.obj -c D:\\OneDrive\\Code\\DesignMode\\DesignMode.cpp",
+  "file": "D:/OneDrive/Code/DesignMode/DesignMode.cpp"
+},
+{
+  "directory": "D:/OneDrive/Code/build",
+  "command": "D:\\OneDrive\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -o CMakeFiles\\DesignMode.dir\\DesignMode\\SingletonMode.cpp.obj -c D:\\OneDrive\\Code\\DesignMode\\SingletonMode.cpp",
+  "file": "D:/OneDrive/Code/DesignMode/SingletonMode.cpp"
+},
+{
+  "directory": "D:/OneDrive/Code/build",
+  "command": "D:\\OneDrive\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -o CMakeFiles\\DealFile.dir\\DealFile.cpp.obj -c D:\\OneDrive\\Code\\DealFile.cpp",
+  "file": "D:/OneDrive/Code/DealFile.cpp"
+}
+]
