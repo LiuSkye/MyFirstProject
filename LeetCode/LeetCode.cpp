@@ -1,7 +1,7 @@
 /*
  * @Author: Skye
  * @Date: 2020-10-23 10:41:24
- * @LastEditTime: 2022-03-16 17:49:15
+ * @LastEditTime: 2022-03-16 15:37:09
  * @Description: LeetCode
  * Skye:'Never stop!'
  */
@@ -119,14 +119,11 @@ int main()
     XCIs<string, Vec> myVec;
 
     vector<int> te{3, 1, 2, 5, 4, 8, 6, 7, 0};
-    // quickSort(te, 0, te.size());
-    // BubbleSort(te);
-    // InsertSort(te);
-    // SelectSort(te);
-    // QuickSort(te, 0, te.size());
+
     MergeSort(te);
     PrintfVec(te);
-    return 0;
+    //return 0;
+    
     int a = -1;
     unsigned int b = (unsigned int)a;
     cout << bitset<32>(a) << "," << bitset<32>(b) << endl;
@@ -140,17 +137,6 @@ int main()
 
     Solution *ptr = nullptr;
     cout << &ptr;
-
-    // BSTree<int> tree;
-    // tree.insert(8);
-    // tree.insert(6);
-    // tree.insert(5);
-    // tree.insert(7);
-    // tree.insert(10);
-    // tree.insert(9);
-    // tree.insert(11);
-    // auto p = tree.search(11);
-    // cout << *p << endl;
 
     vector<int> nn{5, 7, 7, 8, 8, 10};
     auto iter = upper_bound(nn.begin(), nn.end(), 6);
@@ -176,15 +162,13 @@ int main()
     // delete[] str; //没有内存泄漏
     // cout << temp << endl;
     //////////////////////////////////////
-    // int a[8] = {1, 2, 3, 4, 5, 6, 7};
-    // int *p = a;
-    // p++;
-    // cout << *(p + 1) * (p + 1)[2] << endl;
+    int arr[8] = {1, 2, 3, 4, 5, 6, 7};
+    int *p = arr;
+    p++;
+    cout << *(p + 1) * (p + 1)[2] << endl;
 
     // system("pause");
-
     int *nums = new int[20];
     _CrtDumpMemoryLeaks();
     return 0;
 }
-//test
