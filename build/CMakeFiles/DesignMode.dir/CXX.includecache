@@ -21,6 +21,8 @@ TestClass.h
 D:/OneDrive/Code/DesignMode/TestClass.h
 SingletonMode.h
 D:/OneDrive/Code/DesignMode/SingletonMode.h
+UndoStack.h
+D:/OneDrive/Code/DesignMode/UndoStack.h
 
 D:/OneDrive/Code/DesignMode/SingletonMode.cpp
 vector
@@ -37,4 +39,20 @@ string
 -
 
 D:/OneDrive/Code/DesignMode/TestClass.h
+
+D:/OneDrive/Code/DesignMode/UndoStack.h
+string
+-
+vector
+-
+deque
+-
+memory
+-
+functional
+-
+mutex
+-
+assert.h
+-
 

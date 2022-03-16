@@ -14,6 +14,9 @@
 #include <map>
 #include <stdio.h>
 #include <assert.h>
+#include <exception>
+#include <set>
+#include <numeric>
 
 vector<int> Solution::PartionLabels(string S)
 {
@@ -424,12 +427,12 @@ int Split(vector<int> &data, int begin, int end)
     swap(data[small], data[end - 1]);
     return small;
 }
-//中轴写法
+//中轴写法,非静态函数，在其他源文件中可见
 int Partition(vector<int> &data, int begin, int end)
 {
     if (data.empty() || begin < 0 || end > data.size())
     {
-        //throw new std::exception("Invalid Parameters");
+        throw "Invalid Parameters";
         return -1;
     }
     int pivot = data[begin];
@@ -460,7 +463,7 @@ void quickSort(vector<int> &data, int begin, int end)
     {
         return;
     }
-    int index = Split(data, begin, end);
+    int index = Partition(data, begin, end);
     if (index > begin)
         quickSort(data, begin, index);
     if (index < end)
@@ -687,6 +690,61 @@ int GetUpperBound(const vector<int> &nums, int target)
     }
     return left;
 }
+
+int minAbsoluteSumDiff(vector<int> &nums1, vector<int> &nums2)
+{
+    int n = nums1.size();
+    if (n != nums2.size())
+    {
+        throw "invalid parameters!";
+        return -1;
+    }
+    std::set<int> memo(nums1.begin(), nums1.end());
+    int max_change = 0;
+    int pos = 0;
+
+    vector<int> diff(n);
+    for(int i = 0; i < n; ++i){
+            diff[i] = abs(nums1[i] - nums2[i]);
+            if(diff[i]==0)
+            {
+                continue;
+            }
+            if(memo.count(nums2[i])){
+                int change = diff[i]; //可以变成0
+                if(change > max_change)
+                {
+                    max_change = change;
+                    pos = i;
+                }
+            }
+            else {
+                auto iter = memo.insert(nums2[i]).first;
+                int change = 0;
+                if(iter != memo.begin())
+                {
+                    int front = *(--iter);
+                    change = nums2[i] - front;
+                }
+                if(++(++iter) != memo.end())
+                {
+                    int back = *iter;
+                    change = min(change, back - nums2[i]);    
+                }
+
+                change = diff[i] - change;
+                if(change > max_change)
+                {
+                    max_change = change;
+                    pos = i;
+                }
+                memo.erase(nums2[i]);
+            }
+        }
+    diff[pos] = diff[pos] - max_change;
+    return std::accumulate(diff.begin(), diff.end(), 0);
+}
+
 // 不能放置在头文件中，会引起重定义
 const int TestStaticConst::data; //定义，声明已经赋初值，不可再赋值
 double TestStaticConst::dd = 1.0;

@@ -6,6 +6,8 @@ CMakeFiles/LeetCode.dir/LeetCode/BinarySearchTree.cpp.obj: ../LeetCode/BinarySea
 
 CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/BinarySearchTree.h
 CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/LeetCode.cpp
+CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/SortAlgorithm.h
+CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/ThreadPool.h
 CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/printf_tools.h
 CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/solution.h
 CMakeFiles/LeetCode.dir/LeetCode/LeetCode.cpp.obj: ../LeetCode/test.h

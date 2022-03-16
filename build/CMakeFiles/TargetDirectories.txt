@@ -9,7 +9,6 @@ D:/OneDrive/Code/build/CMakeFiles/Continuous.dir
 D:/OneDrive/Code/build/CMakeFiles/NightlyTest.dir
 D:/OneDrive/Code/build/CMakeFiles/Nightly.dir
 D:/OneDrive/Code/build/CMakeFiles/NightlyUpdate.dir
-D:/OneDrive/Code/build/CMakeFiles/DesignMode.dir
 D:/OneDrive/Code/build/CMakeFiles/NightlyCoverage.dir
 D:/OneDrive/Code/build/CMakeFiles/NightlyMemCheck.dir
 D:/OneDrive/Code/build/CMakeFiles/ExperimentalBuild.dir
@@ -29,7 +28,6 @@ D:/OneDrive/Code/build/CMakeFiles/ContinuousConfigure.dir
 D:/OneDrive/Code/build/CMakeFiles/ContinuousBuild.dir
 D:/OneDrive/Code/build/CMakeFiles/ContinuousTest.dir
 D:/OneDrive/Code/build/CMakeFiles/ContinuousCoverage.dir
-D:/OneDrive/Code/build/CMakeFiles/DealFile.dir
 D:/OneDrive/Code/build/CMakeFiles/package.dir
 D:/OneDrive/Code/build/CMakeFiles/test.dir
 D:/OneDrive/Code/build/CMakeFiles/edit_cache.dir

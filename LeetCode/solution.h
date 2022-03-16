@@ -86,7 +86,7 @@ public:
     int findMaxLength(vector<int> &nums);
 };
 
-int Partition(vector<int> &data, int begin, int end);
+static int Partition(vector<int> &data, int begin, int end);
 void quickSort(vector<int> &data, int begin, int end);
 
 //正则表达式匹配
@@ -106,6 +106,8 @@ int translateNum(int num);
 int GetLowerBound(const vector<int> &nums, int target);
 
 int GetUpperBound(const vector<int> &nums, int target);
+
+int minAbsoluteSumDiff(vector<int>& nums1, vector<int>& nums2);
 
 class TestStaticConst
 {

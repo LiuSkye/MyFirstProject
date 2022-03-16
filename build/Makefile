@@ -286,19 +286,6 @@ NightlyUpdate/fast:
 .PHONY : NightlyUpdate/fast
 
 #=============================================================================
-# Target rules for targets named DesignMode
-
-# Build rule for target.
-DesignMode: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 DesignMode
-.PHONY : DesignMode
-
-# fast build rule for target.
-DesignMode/fast:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/build
-.PHONY : DesignMode/fast
-
-#=============================================================================
 # Target rules for targets named NightlyCoverage
 
 # Build rule for target.
@@ -532,100 +519,6 @@ ContinuousCoverage/fast:
 	$(MAKE) -f CMakeFiles\ContinuousCoverage.dir\build.make CMakeFiles/ContinuousCoverage.dir/build
 .PHONY : ContinuousCoverage/fast
 
-#=============================================================================
-# Target rules for targets named DealFile
-
-# Build rule for target.
-DealFile: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 DealFile
-.PHONY : DealFile
-
-# fast build rule for target.
-DealFile/fast:
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/build
-.PHONY : DealFile/fast
-
-DealFile.obj: DealFile.cpp.obj
-
-.PHONY : DealFile.obj
-
-# target to build an object file
-DealFile.cpp.obj:
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/DealFile.cpp.obj
-.PHONY : DealFile.cpp.obj
-
-DealFile.i: DealFile.cpp.i
-
-.PHONY : DealFile.i
-
-# target to preprocess a source file
-DealFile.cpp.i:
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/DealFile.cpp.i
-.PHONY : DealFile.cpp.i
-
-DealFile.s: DealFile.cpp.s
-
-.PHONY : DealFile.s
-
-# target to generate assembly for a file
-DealFile.cpp.s:
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/DealFile.cpp.s
-.PHONY : DealFile.cpp.s
-
-DesignMode/DesignMode.obj: DesignMode/DesignMode.cpp.obj
-
-.PHONY : DesignMode/DesignMode.obj
-
-# target to build an object file
-DesignMode/DesignMode.cpp.obj:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.obj
-.PHONY : DesignMode/DesignMode.cpp.obj
-
-DesignMode/DesignMode.i: DesignMode/DesignMode.cpp.i
-
-.PHONY : DesignMode/DesignMode.i
-
-# target to preprocess a source file
-DesignMode/DesignMode.cpp.i:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.i
-.PHONY : DesignMode/DesignMode.cpp.i
-
-DesignMode/DesignMode.s: DesignMode/DesignMode.cpp.s
-
-.PHONY : DesignMode/DesignMode.s
-
-# target to generate assembly for a file
-DesignMode/DesignMode.cpp.s:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.s
-.PHONY : DesignMode/DesignMode.cpp.s
-
-DesignMode/SingletonMode.obj: DesignMode/SingletonMode.cpp.obj
-
-.PHONY : DesignMode/SingletonMode.obj
-
-# target to build an object file
-DesignMode/SingletonMode.cpp.obj:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/DesignMode/SingletonMode.cpp.obj
-.PHONY : DesignMode/SingletonMode.cpp.obj
-
-DesignMode/SingletonMode.i: DesignMode/SingletonMode.cpp.i
-
-.PHONY : DesignMode/SingletonMode.i
-
-# target to preprocess a source file
-DesignMode/SingletonMode.cpp.i:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/DesignMode/SingletonMode.cpp.i
-.PHONY : DesignMode/SingletonMode.cpp.i
-
-DesignMode/SingletonMode.s: DesignMode/SingletonMode.cpp.s
-
-.PHONY : DesignMode/SingletonMode.s
-
-# target to generate assembly for a file
-DesignMode/SingletonMode.cpp.s:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/DesignMode/SingletonMode.cpp.s
-.PHONY : DesignMode/SingletonMode.cpp.s
-
 LeetCode/BinarySearchTree.obj: LeetCode/BinarySearchTree.cpp.obj
 
 .PHONY : LeetCode/BinarySearchTree.obj
@@ -724,7 +617,6 @@ help:
 	@echo ... NightlyTest
 	@echo ... Nightly
 	@echo ... NightlyUpdate
-	@echo ... DesignMode
 	@echo ... NightlyCoverage
 	@echo ... NightlyMemCheck
 	@echo ... ExperimentalBuild
@@ -744,20 +636,10 @@ help:
 	@echo ... ContinuousBuild
 	@echo ... ContinuousTest
 	@echo ... ContinuousCoverage
-	@echo ... DealFile
 	@echo ... package
 	@echo ... test
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DealFile.obj
-	@echo ... DealFile.i
-	@echo ... DealFile.s
-	@echo ... DesignMode/DesignMode.obj
-	@echo ... DesignMode/DesignMode.i
-	@echo ... DesignMode/DesignMode.s
-	@echo ... DesignMode/SingletonMode.obj
-	@echo ... DesignMode/SingletonMode.i
-	@echo ... DesignMode/SingletonMode.s
 	@echo ... LeetCode/BinarySearchTree.obj
 	@echo ... LeetCode/BinarySearchTree.i
 	@echo ... LeetCode/BinarySearchTree.s

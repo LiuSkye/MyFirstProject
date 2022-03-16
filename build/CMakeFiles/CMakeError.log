@@ -1,0 +1,204 @@
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_8dbff/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_8dbff.dir\build.make CMakeFiles/cmTC_8dbff.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8dbff.dir/test_mpi.c.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/cmTC_8dbff.dir/includes_C.rsp  -o CMakeFiles\cmTC_8dbff.dir\test_mpi.c.obj   -c "C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c"
+C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_8dbff.dir\build.make:66: CMakeFiles/cmTC_8dbff.dir/test_mpi.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_8dbff/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_0f439/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_0f439.dir\build.make CMakeFiles/cmTC_0f439.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0f439.dir/test_mpi.cpp.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-g++.exe   @CMakeFiles/cmTC_0f439.dir/includes_CXX.rsp  -o CMakeFiles\cmTC_0f439.dir\test_mpi.cpp.obj -c D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp
+D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_0f439.dir\build.make:66: CMakeFiles/cmTC_0f439.dir/test_mpi.cpp.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_0f439/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_d06a0/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_d06a0.dir\build.make CMakeFiles/cmTC_d06a0.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d06a0.dir/test_mpi.c.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/cmTC_d06a0.dir/includes_C.rsp  -o CMakeFiles\cmTC_d06a0.dir\test_mpi.c.obj   -c "C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c"
+C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_d06a0.dir\build.make:66: CMakeFiles/cmTC_d06a0.dir/test_mpi.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_d06a0/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_9bff2/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_9bff2.dir\build.make CMakeFiles/cmTC_9bff2.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9bff2.dir/test_mpi.cpp.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-g++.exe   @CMakeFiles/cmTC_9bff2.dir/includes_CXX.rsp  -o CMakeFiles\cmTC_9bff2.dir\test_mpi.cpp.obj -c D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp
+D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_9bff2.dir\build.make:66: CMakeFiles/cmTC_9bff2.dir/test_mpi.cpp.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_9bff2/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_911f1/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_911f1.dir\build.make CMakeFiles/cmTC_911f1.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_911f1.dir/test_mpi.c.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/cmTC_911f1.dir/includes_C.rsp  -o CMakeFiles\cmTC_911f1.dir\test_mpi.c.obj   -c "C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c"
+C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_911f1.dir\build.make:66: CMakeFiles/cmTC_911f1.dir/test_mpi.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_911f1/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_9aec6/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_9aec6.dir\build.make CMakeFiles/cmTC_9aec6.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9aec6.dir/test_mpi.cpp.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-g++.exe   @CMakeFiles/cmTC_9aec6.dir/includes_CXX.rsp  -o CMakeFiles\cmTC_9aec6.dir\test_mpi.cpp.obj -c D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp
+D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_9aec6.dir\build.make:66: CMakeFiles/cmTC_9aec6.dir/test_mpi.cpp.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_9aec6/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_08153/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_08153.dir\build.make CMakeFiles/cmTC_08153.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_08153.dir/test_mpi.c.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/cmTC_08153.dir/includes_C.rsp  -o CMakeFiles\cmTC_08153.dir\test_mpi.c.obj   -c "C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c"
+C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_08153.dir\build.make:66: CMakeFiles/cmTC_08153.dir/test_mpi.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_08153/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_89e48/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_89e48.dir\build.make CMakeFiles/cmTC_89e48.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_89e48.dir/test_mpi.cpp.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-g++.exe   @CMakeFiles/cmTC_89e48.dir/includes_CXX.rsp  -o CMakeFiles\cmTC_89e48.dir\test_mpi.cpp.obj -c D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp
+D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_89e48.dir\build.make:66: CMakeFiles/cmTC_89e48.dir/test_mpi.cpp.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_89e48/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_6ffe5/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_6ffe5.dir\build.make CMakeFiles/cmTC_6ffe5.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6ffe5.dir/test_mpi.c.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/cmTC_6ffe5.dir/includes_C.rsp  -o CMakeFiles\cmTC_6ffe5.dir\test_mpi.c.obj   -c "C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c"
+C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_6ffe5.dir\build.make:66: CMakeFiles/cmTC_6ffe5.dir/test_mpi.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_6ffe5/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_6ba21/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_6ba21.dir\build.make CMakeFiles/cmTC_6ba21.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6ba21.dir/test_mpi.cpp.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-g++.exe   @CMakeFiles/cmTC_6ba21.dir/includes_CXX.rsp  -o CMakeFiles\cmTC_6ba21.dir\test_mpi.cpp.obj -c D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp
+D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_6ba21.dir\build.make:66: CMakeFiles/cmTC_6ba21.dir/test_mpi.cpp.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_6ba21/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_1e978/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_1e978.dir\build.make CMakeFiles/cmTC_1e978.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1e978.dir/test_mpi.c.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/cmTC_1e978.dir/includes_C.rsp  -o CMakeFiles\cmTC_1e978.dir\test_mpi.c.obj   -c "C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c"
+C:\Program Files\CMake\share\cmake-3.15\Modules\FindMPI\test_mpi.c:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_1e978.dir\build.make:66: CMakeFiles/cmTC_1e978.dir/test_mpi.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_1e978/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: D:/OneDrive/Code/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/OneDrive/MinGW64/bin/mingw32-make.exe cmTC_3ea98/fast && D:/OneDrive/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_3ea98.dir\build.make CMakeFiles/cmTC_3ea98.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3ea98.dir/test_mpi.cpp.obj
+D:\OneDrive\MinGW64\bin\x86_64-w64-mingw32-g++.exe   @CMakeFiles/cmTC_3ea98.dir/includes_CXX.rsp  -o CMakeFiles\cmTC_3ea98.dir\test_mpi.cpp.obj -c D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp
+D:\OneDrive\Code\build\CMakeFiles\FindMPI\test_mpi.cpp:1:10: fatal error: mpi.h: No such file or directory
+ #include <mpi.h>
+          ^~~~~~~
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_3ea98.dir\build.make:66: CMakeFiles/cmTC_3ea98.dir/test_mpi.cpp.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/OneDrive/Code/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:120: cmTC_3ea98/fast] Error 2
+
+
+

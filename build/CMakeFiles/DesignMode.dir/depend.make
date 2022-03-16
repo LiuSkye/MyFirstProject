@@ -4,6 +4,7 @@
 CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.obj: ../DesignMode/DesignMode.cpp
 CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.obj: ../DesignMode/SingletonMode.h
 CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.obj: ../DesignMode/TestClass.h
+CMakeFiles/DesignMode.dir/DesignMode/DesignMode.cpp.obj: ../DesignMode/UndoStack.h
 
 CMakeFiles/DesignMode.dir/DesignMode/SingletonMode.cpp.obj: ../DesignMode/SingletonMode.cpp
 CMakeFiles/DesignMode.dir/DesignMode/SingletonMode.cpp.obj: ../DesignMode/SingletonMode.h

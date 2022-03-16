@@ -73,7 +73,6 @@ clean: CMakeFiles/Continuous.dir/clean
 clean: CMakeFiles/NightlyTest.dir/clean
 clean: CMakeFiles/Nightly.dir/clean
 clean: CMakeFiles/NightlyUpdate.dir/clean
-clean: CMakeFiles/DesignMode.dir/clean
 clean: CMakeFiles/NightlyCoverage.dir/clean
 clean: CMakeFiles/NightlyMemCheck.dir/clean
 clean: CMakeFiles/ExperimentalBuild.dir/clean
@@ -92,7 +91,6 @@ clean: CMakeFiles/ContinuousConfigure.dir/clean
 clean: CMakeFiles/ContinuousBuild.dir/clean
 clean: CMakeFiles/ContinuousTest.dir/clean
 clean: CMakeFiles/ContinuousCoverage.dir/clean
-clean: CMakeFiles/DealFile.dir/clean
 
 .PHONY : clean
 
@@ -157,7 +155,7 @@ CMakeFiles/Experimental.dir/clean:
 CMakeFiles/LeetCode.dir/all:
 	$(MAKE) -f CMakeFiles\LeetCode.dir\build.make CMakeFiles/LeetCode.dir/depend
 	$(MAKE) -f CMakeFiles\LeetCode.dir\build.make CMakeFiles/LeetCode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\OneDrive\Code\build\CMakeFiles --progress-num=6,7,8,9 "Built target LeetCode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\OneDrive\Code\build\CMakeFiles --progress-num=1,2,3,4 "Built target LeetCode"
 .PHONY : CMakeFiles/LeetCode.dir/all
 
 # Include target in all.
@@ -397,38 +395,6 @@ NightlyUpdate: CMakeFiles/NightlyUpdate.dir/rule
 CMakeFiles/NightlyUpdate.dir/clean:
 	$(MAKE) -f CMakeFiles\NightlyUpdate.dir\build.make CMakeFiles/NightlyUpdate.dir/clean
 .PHONY : CMakeFiles/NightlyUpdate.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/DesignMode.dir
-
-# All Build rule for target.
-CMakeFiles/DesignMode.dir/all:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/depend
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\OneDrive\Code\build\CMakeFiles --progress-num=3,4,5 "Built target DesignMode"
-.PHONY : CMakeFiles/DesignMode.dir/all
-
-# Include target in all.
-all: CMakeFiles/DesignMode.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/DesignMode.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\OneDrive\Code\build\CMakeFiles 3
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/DesignMode.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\OneDrive\Code\build\CMakeFiles 0
-.PHONY : CMakeFiles/DesignMode.dir/rule
-
-# Convenience name for target.
-DesignMode: CMakeFiles/DesignMode.dir/rule
-
-.PHONY : DesignMode
-
-# clean rule for target.
-CMakeFiles/DesignMode.dir/clean:
-	$(MAKE) -f CMakeFiles\DesignMode.dir\build.make CMakeFiles/DesignMode.dir/clean
-.PHONY : CMakeFiles/DesignMode.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/NightlyCoverage.dir
@@ -915,38 +881,6 @@ ContinuousCoverage: CMakeFiles/ContinuousCoverage.dir/rule
 CMakeFiles/ContinuousCoverage.dir/clean:
 	$(MAKE) -f CMakeFiles\ContinuousCoverage.dir\build.make CMakeFiles/ContinuousCoverage.dir/clean
 .PHONY : CMakeFiles/ContinuousCoverage.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/DealFile.dir
-
-# All Build rule for target.
-CMakeFiles/DealFile.dir/all:
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/depend
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\OneDrive\Code\build\CMakeFiles --progress-num=1,2 "Built target DealFile"
-.PHONY : CMakeFiles/DealFile.dir/all
-
-# Include target in all.
-all: CMakeFiles/DealFile.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/DealFile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\OneDrive\Code\build\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/DealFile.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\OneDrive\Code\build\CMakeFiles 0
-.PHONY : CMakeFiles/DealFile.dir/rule
-
-# Convenience name for target.
-DealFile: CMakeFiles/DealFile.dir/rule
-
-.PHONY : DealFile
-
-# clean rule for target.
-CMakeFiles/DealFile.dir/clean:
-	$(MAKE) -f CMakeFiles\DealFile.dir\build.make CMakeFiles/DealFile.dir/clean
-.PHONY : CMakeFiles/DealFile.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

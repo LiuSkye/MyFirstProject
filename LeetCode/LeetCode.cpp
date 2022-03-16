@@ -1,7 +1,7 @@
 /*
  * @Author: Skye
  * @Date: 2020-10-23 10:41:24
- * @LastEditTime: 2021-06-29 09:47:56
+ * @LastEditTime: 2022-01-17 11:44:29
  * @Description: LeetCode
  * Skye:'Never stop!'
  */
@@ -11,6 +11,9 @@
 #include "solution.h"
 #include "printf_tools.h"
 #include "BinarySearchTree.h"
+#include "test.h"
+#include "SortAlgorithm.h"
+#include "ThreadPool.h"
 
 #include <string>
 #include <Windows.h>
@@ -18,9 +21,10 @@
 #include <map>
 #include <functional>
 #include <bitset>
-#include "test.h"
 #include <algorithm>
 #include <cstdio>
+#include <array>
+#include <iostream>
 
 struct Info
 {
@@ -39,8 +43,67 @@ struct Info2
     double b;
 };
 
+int countVowelPermutation(int n)
+{
+    function<int(int)> calK = [&](int m)
+    {
+        // 计算以i结尾的可能长m序列数，
+        if (m == 1)
+            return 2;
+        return 1;
+    };
+    function<int(int, int)> CalIPos = [&](int m, int start)
+    {
+        // 用m个i将序列分为m+1段, 最小间隔1
+        // 第一段和最后一段长度可以为0
+        if(m == 0) {
+            if(start <= n) {
+                return 4;
+            } else {
+                return 1;
+            }
+        }
+        if(start >= n) {
+            return 0;
+        }
+        int res = 0;
+        for(int i = start; i < n; i++) {
+            res += calK(i - start) * CalIPos(m-1, i+2);
+        }
+        return res;
+    };
+    int ret = 4;
+    // 最多（n+1）/2个i
+    for (int num_i = 1; num_i <= (n + 1) / 2; ++num_i)
+    {
+        ret += CalIPos(num_i, 0);
+    }
+    CalIPos(1,1);
+    return ret;
+}
 int main()
 {
+    countVowelPermutation(3);
+    vector<int> houses{1, 2, 3};
+    vector<int> heater{2};
+
+    vector<int> nums1{1, 7, 5};
+    vector<int> nums2{2, 3, 5};
+    // cout << minAbsoluteSumDiff(nums1, nums2) << endl;
+    using std::vector;
+    vector<int> data{9, 8, 7, 2, 5, 4, 5, 2, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    MakeHeap(data);
+
+    // ThreadPool pool(1);
+    // pool.Start();
+    // pool.AddTask(std::bind(minAbsoluteSumDiff, nums1, nums2));
+    // if (!pool.AddTask([]()
+    //                   { cout << "i am excuted in pool!" << endl; }))
+    // {
+    //     cout << "pool is full!" << endl;
+    // }
+    // return 0;
+
     Info info;
     info.Print();
     std::cout << sizeof(Info) << std::endl;
@@ -56,9 +119,14 @@ int main()
     XCIs<string, Vec> myVec;
 
     vector<int> te{3, 1, 2, 5, 4, 8, 6, 7, 0};
-    quickSort(te, 0, te.size());
+    // quickSort(te, 0, te.size());
+    // BubbleSort(te);
+    // InsertSort(te);
+    // SelectSort(te);
+    // QuickSort(te, 0, te.size());
+    MergeSort(te);
     PrintfVec(te);
-
+    return 0;
     int a = -1;
     unsigned int b = (unsigned int)a;
     cout << bitset<32>(a) << "," << bitset<32>(b) << endl;
@@ -73,16 +141,16 @@ int main()
     Solution *ptr = nullptr;
     cout << &ptr;
 
-    BSTree<int> tree;
-    tree.insert(8);
-    tree.insert(6);
-    tree.insert(5);
-    tree.insert(7);
-    tree.insert(10);
-    tree.insert(9);
-    tree.insert(11);
-    auto p = tree.search(11);
-    cout << *p << endl;
+    // BSTree<int> tree;
+    // tree.insert(8);
+    // tree.insert(6);
+    // tree.insert(5);
+    // tree.insert(7);
+    // tree.insert(10);
+    // tree.insert(9);
+    // tree.insert(11);
+    // auto p = tree.search(11);
+    // cout << *p << endl;
 
     vector<int> nn{5, 7, 7, 8, 8, 10};
     auto iter = upper_bound(nn.begin(), nn.end(), 6);
@@ -113,7 +181,8 @@ int main()
     // p++;
     // cout << *(p + 1) * (p + 1)[2] << endl;
 
-    //system("pause");
+    // system("pause");
+
     int *nums = new int[20];
     _CrtDumpMemoryLeaks();
     return 0;

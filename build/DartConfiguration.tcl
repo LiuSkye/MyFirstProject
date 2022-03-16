@@ -11,7 +11,7 @@ BuildDirectory: D:/OneDrive/Code/build
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: SKYE-DESKTOP
+Site: SKYEBOOK
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Win32-mingw32-make
