@@ -1,11 +1,7 @@
 /*
  * @Author: Skye
  * @Date: 2020-10-23 10:41:24
-<<<<<<< HEAD
- * @LastEditTime: 2022-03-16 17:44:14
-=======
- * @LastEditTime: 2022-01-17 11:44:29
->>>>>>> parent of 2359017 (modify LeetCode)
+ * @LastEditTime: 2022-03-16 17:46:31
  * @Description: LeetCode
  * Skye:'Never stop!'
  */
