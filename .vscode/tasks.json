@@ -3,10 +3,14 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++-7 build active file",
-            "command": "start",
+            "command": "bash",
             "args": [
-                "D:/OneDrive/Code/build.bat"
+                "/home/skye/MyCode/MyFirstProject/Make.sh"
             ],
+            // "command": "start",
+            // "args": [
+            //     "D:/OneDrive/Code/build.bat"
+            // ],
             "problemMatcher": [
                 "$gcc"
             ],
