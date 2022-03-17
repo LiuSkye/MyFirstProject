@@ -1,3 +1,4 @@
-cmake --build d:/OneDrive/Code/build --config Debug --target all -j 18 --
-::mingw32-make D:/Code/build
+cmake --build d:/OneDrive/Code/MyFirstProject/build --config Debug --target LeetCode -j 18 --
+cd D:/OneDrive/Code/MyFirstProject/build
+make
 exit
