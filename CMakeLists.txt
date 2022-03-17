@@ -3,15 +3,15 @@ project(myProject VERSION 0.1.0)
 
 #set(CMAKE_BUILD_TYPE Debug)
 
-include(CTest)
-enable_testing()
+# include(CTest)
+# enable_testing()
 
-find_package(MPI REQUIRED) 
-if (MPI_FOUND) 
-    include_directories(SYSTEM ${MPI_INCLUDE_PATH}) 
-else (MPI_FOUND) 
-    message(SEND_ERROR "This application cannot compile without MPI") 
-endif (MPI_FOUND) 
+# find_package(MPI REQUIRED) 
+# if (MPI_FOUND) 
+#     include_directories(SYSTEM ${MPI_INCLUDE_PATH}) 
+# else (MPI_FOUND) 
+#     message(SEND_ERROR "This application cannot compile without MPI") 
+# endif (MPI_FOUND) 
 
 file(GLOB srcfile2 "./LeetCode/*.cpp")
 add_executable(LeetCode ${srcfile2})
