@@ -6,7 +6,7 @@
  * Skye:'Never stop!'
  */
 
-#define CRTDBG_MAP_ALLOC
+// #define CRTDBG_MAP_ALLOC
 
 #include "solution.h"
 #include "printf_tools.h"
@@ -16,8 +16,8 @@
 #include "ThreadPool.h"
 
 #include <string>
-#include <Windows.h>
-#include <crtdbg.h>
+// #include <Windows.h>
+// #include <crtdbg.h>
 #include <map>
 #include <functional>
 #include <bitset>
@@ -169,6 +169,6 @@ int main()
 
     // system("pause");
     int *nums = new int[20];
-    _CrtDumpMemoryLeaks();
+    // _CrtDumpMemoryLeaks();
     return 0;
 }
