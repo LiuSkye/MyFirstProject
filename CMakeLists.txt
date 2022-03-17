@@ -3,9 +3,6 @@ project(myProject VERSION 0.1.0)
 
 #set(CMAKE_BUILD_TYPE Debug)
 
-# include(CTest)
-# enable_testing()
-
 # find_package(MPI REQUIRED) 
 # if (MPI_FOUND) 
 #     include_directories(SYSTEM ${MPI_INCLUDE_PATH}) 
@@ -16,11 +13,8 @@ project(myProject VERSION 0.1.0)
 file(GLOB srcfile2 "./LeetCode/*.cpp")
 add_executable(LeetCode ${srcfile2})
 
-# file(GLOB srcfile "./DesignMode/*.cpp")
-# add_executable(DesignMode ${srcfile})
-
-# file(GLOB srcfile3 "./TestSolution/*.cpp")
-# add_executable(TestSolution ${srcfile3})
+file(GLOB srcfile "./DesignMode/*.cpp")
+add_executable(DesignMode ${srcfile})
 
 # add_executable(DealFile "./DealFile.cpp")
 

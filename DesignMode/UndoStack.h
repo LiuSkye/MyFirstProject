@@ -134,7 +134,7 @@ public:
             assert(!"UndoRedoStack: 正在命令动作中，不应撤销重做！");
             EndAnAction();
         }
-        if (_undoPos < 0) //已经撤销到底了
+        if (_undoPos <= 0) //已经撤销到底了
         {
             return false;
         }
@@ -234,14 +234,15 @@ public:
     }
 
 public:
+    bool (ProjectNode::*ptr)(const string&) = &ProjectNode::DeleteData;
     void ActionAddNode(std::shared_ptr<ProjectNode> node)
     {
-        std::shared_ptr<Action> act(new Action(Action_ADD, CreateUniqueId(), "Add", node, std::bind(ProjectNode::DeleteData, node, "A")));
+        std::shared_ptr<Action> act(new Action(Action_ADD, CreateUniqueId(), "Add", node, std::bind(ptr, node , "A")));
         Push(act);
     }
     void ActionDeleteNode(std::shared_ptr<ProjectNode> node)
     {
-        std::shared_ptr<Action> act(new Action(Action_ADD, CreateUniqueId(), "Delete", node, std::bind(ProjectNode::AddData, node, "A")));
+        std::shared_ptr<Action> act(new Action(Action_ADD, CreateUniqueId(), "Delete", node, std::bind(ptr, node, "A")));
         Push(act);
     }
 

@@ -30,7 +30,7 @@ struct Info
 {
     void Print()
     {
-        printf("%d,%d,%d\n", &a, &b, &c);
+        printf("%s,%s,%u\n", &a, &b, &c);
     }
     uint8_t a;
     uint8_t b;

@@ -73,7 +73,7 @@ int main()
         stk.ActionAddNode(node);
         std::cout << node->_data << endl;
     }
-    for (int i = 0; i < 15; ++i)
+    for (int i = 0; i < 11; ++i)
     {
         stk.Undo();
         std::cout << node->_data << endl;

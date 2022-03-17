@@ -3,5 +3,5 @@
 set -x
 
 cd /home/skye/MyCode/MyFirstProject/build/
-cmake ../
-make
+cmake -Wformat=0 ../ 
+make 
