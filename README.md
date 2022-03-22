@@ -1,2 +1,3 @@
-==*skye's study project*==
+*skye's study project*
+
 hello
