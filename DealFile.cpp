@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
+#include <vector>
 #include <math.h>
 #include <iostream>
 
@@ -96,4 +97,17 @@ int main()
     }
     ostr.close();
     return 0;
+}
+
+void AnalyzeLine(string &line, string &dir_name, int level)
+{
+    size_t pos = line.find_last_of('-');
+    if(pos == string::npos) {
+        level == 0;
+        dir_name = line;
+    }
+    else {
+        level = (pos+1)/2;
+        dir_name = line.substr(pos+1);
+    }
 }
