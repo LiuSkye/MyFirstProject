@@ -5,9 +5,11 @@
  * Note: 缺省代码仅供参考，可自行决定使用、修改或删除
  */
 #include <vector>
+#include <set>
 #include <string>
 #include <iostream>
 #include <functional>
+#include <algorithm>
 using namespace std;
 
 struct TreeNode
@@ -127,28 +129,33 @@ inline void WriteVector(const vector<T> &objects, char delimeter = ' ')
     cout << endl;
 }
 
-int GetMinStep(std::vector<int>& floor)
+int GetMinStep(std::vector<int> &floor)
 {
     int n = floor.size();
-    if(n <= 1) {
+    if (n <= 1)
+    {
         return 0;
     }
     int cur_pos = 0;
     int cur_right = 0;
     int next_right = 0;
     int step = 0;
-    while(cur_pos <= next_right) {
-        if(cur_pos > cur_right) {
+    while (cur_pos <= next_right)
+    {
+        if (cur_pos > cur_right)
+        {
             step++;
             cur_right = next_right;
         }
         int arrive = cur_pos + floor[cur_pos];
-        if(arrive > next_right) {
+        if (arrive > next_right)
+        {
             next_right = arrive;
         }
         cur_pos++;
-        if(next_right >= n - 1) {
-            return step+1;
+        if (next_right >= n - 1)
+        {
+            return step + 1;
         }
     }
     return -1;
@@ -161,13 +168,18 @@ int main()
     // auto delDirs = solu.DelAllDirectorys(dirTreeLines);
     // WriteVector(delDirs);
     int n = 0;
-    std::cin >>n;
+    std::cin >> n;
     std::vector<int> nums;
-    while(n--) {
+    while (n--)
+    {
         int m = 0;
-        std::cin >>m;
+        std::cin >> m;
         nums.push_back(m);
     }
     std::cout << GetMinStep(nums);
+    set<char> init_res;
+    vector<char> result;
+    for_each(init_res.begin(), init_res.end(), [&](char it)
+             { result.push_back(it); });
     return 0;
 }
