@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(myProject VERSION 0.1.0)
 
-#set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
+
+set(CMAKE_CXX_STANDARD 17)
 # set(CMAKE_C_COMPILER "D:/OneDrive/MinGW64/bin/x86_64-w64-mingw32-gcc.exe")
 
 # set(CMAKE_CXX_COMPILER "D:/OneDrive/MinGW64/bin/x86_64-w64-mingw32-g++.exe")
