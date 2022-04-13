@@ -14,6 +14,13 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <bitset>
+#include <any>
+#include <chrono>
+#include <stack>
+#include <utility>
+#include <bitset>
+#include <numeric>
+#include <execution>
 using namespace std;
 
 struct TreeNode
@@ -311,33 +318,232 @@ void PrintfData(T&& a) { // 转发引用
     cout << a.x << ", " << a.y << ", " << a.z << endl;
 }
 
+
+    // 待实现函数，在此函数中填入答题代码;
+    string CharacterSort(const string &inputStr)
+    {
+        string result = inputStr;
+        int len = result.size();
+        vector<int> num_pos;
+        vector<int> let_pos;
+        for(int i = 0; i < len; ++i) {
+            if(result[i] >= '0' && result[i] <= '9') {
+                num_pos.push_back(i);
+            }
+            else {
+                let_pos.push_back(i);
+            }
+        }
+        for(int j = 0; j < num_pos.size(); ++j) {
+            int i = 0;
+            while(i < num_pos.size() - 1) {
+                if(result[num_pos[i]] > result[num_pos[i + 1]]) {
+                    swap(result[num_pos[i]], result[num_pos[i+1]]);
+                }
+                ++i;
+            }            
+        }
+        auto needSwap = [](char c1, char c2)->bool {
+            if(c1 < c2) {
+                return (c1 < 'a' && c2 < 'a') || (c1 >= 'a' && c2 >= 'a');
+            }
+            if(c1 > c2) {
+                return !((c1 < 'a' && c2 < 'a') || (c1 >= 'a' && c2 >= 'a'));
+            }
+            return false;
+        };
+        for(int j = 0; j < let_pos.size(); ++j) {
+            int i = 0;
+            while(i < let_pos.size() - 1) {
+                if(needSwap(result[let_pos[i]], result[let_pos[i + 1]])) {
+                    swap(result[let_pos[i]], result[let_pos[i+1]]);
+                }
+                ++i;
+            }
+        }
+        return result;
+    }
+
+
+bool Calculate(const string &expression, int& result)
+{
+    stack<int> cals;
+    int start = 0, flag = 1;
+    for(int i = 0; i < expression.size(); ++i) {
+        char c = expression[i];
+        if(c == '+' || c == '-') {
+            if(start < i)
+                cals.push(stoi(expression.substr(start, i - start)) * flag);
+            start = i + 1;
+            flag = (c == '+') ? 1 : -1;
+        }
+        if(c == '*' || c == '/') {
+            if(start < i)
+                cals.push(stoi(expression.substr(start, i - start)) * flag);
+            start = i + 1;
+            int j = i + 1;
+            while(j < expression.size()) {
+                if(expression[j] >= '0' && expression[j] <= '9')
+                    ++j;
+                else
+                    break;
+            }
+            int left = cals.top();
+            int right = stoi(expression.substr(start, j - start));
+            if(c == '/' && right == 0) {
+                return false;
+            }
+            if(c == '*') 
+                left *= right;
+            else
+                left /= right;
+            cals.pop();
+            cals.push(left);
+            i = j - 1;
+            start = j + 1;
+        }
+    }
+    if(start <= expression.size()) {
+        cals.push(flag * stoi(expression.substr(start)));
+    }
+    while(!cals.empty()) {
+        result += cals.top();
+        cals.pop();
+    }
+    return true;
+}
+
+bool Calculate2(const string &expression, int& result)
+{
+    stack<int> nums;
+    int start = 0;
+    char pre_operator{'+'};
+    for(int i = 0; i < expression.size(); ++i) {
+        char c = expression[i];
+        if(c >= '0' && c <= '9' && i < expression.size() - 1) {
+            continue;
+        }
+        if(i == 0) {
+            pre_operator = c;
+            start = i + 1;
+            continue;
+        }
+        int cur_num = stoi(expression.substr(start, i == nums.size() -1 ? 
+            i - start : (i - start + 1)));
+        start = i + 1;
+        // if(pre_operator == '+') {
+        //     nums.push(cur_num);
+        // }
+        // else if(pre_operator == '-') {
+        //     nums.push(-cur_num);
+        // }
+        // else {
+        //     int left = nums.top();
+        //     if(pre_operator == '*') {
+        //         left *= cur_num;
+        //     }
+        //     else if(cur_num == 0) {
+        //         return false;
+        //     }
+        //     else {
+        //         left /= cur_num;
+        //     }
+        //     nums.pop();
+        //     nums.push(left);
+        // }
+        switch(pre_operator) {
+            case'+': {
+                nums.push(cur_num);
+                break;
+            }
+            case '-': {
+                nums.push(-cur_num);
+                break;
+            }
+            case '*': {
+                int left = nums.top();
+                left *= cur_num;
+                nums.pop();
+                nums.push(left);
+                break;
+            }
+            case '/': {
+                int left = nums.top();
+                if(cur_num == 0)
+                    return false;
+                left /= cur_num;
+                nums.pop();
+                nums.push(left);
+                break;
+            }
+            cout << "test" << endl;
+        }
+        pre_operator = c;
+    }
+    while(!nums.empty()) {
+        result += nums.top();
+        nums.pop();
+    }
+    return true;
+}
+
+int BinaryToDecimal(const string &binaryString)
+{
+    int result;
+    bitset<32> num;
+    int j = 0;
+    for(int i = binaryString.size() - 1; i >= 0; --i) {
+        num[j++] = binaryString[i] - '0';
+    }
+    result = num.to_ulong();
+    return result;
+}
+
 int main()
 {
+
+    // string inputStr;
+    // getline(cin, inputStr);
+    // int result = 0;
+    // bool isOk = Calculate2(inputStr, result);
+    // if (isOk) {
+    //     cout << result;
+    // } else {
+    //     cout << "error";
+    // }
+    ////////////////////////////////////////////////////////////////
+    // 并行执行
+    vector<double> v(10000000, 0.0625);
+    {
+        auto t1 = chrono::high_resolution_clock::now();
+        double result = accumulate(v.begin(), v.end(), 0.0);
+        auto t2 = chrono::high_resolution_clock::now();
+        chrono::duration<double, milli> ms = t2-t1;
+        cout << "accumulate: result" << result << "took "
+            <<ms.count() <<"ms" << endl;
+    }
+    {
+        auto t1 = chrono::high_resolution_clock::now();
+        double result = reduce(execution::par, v.begin(), v.end());
+        auto t2 = chrono::high_resolution_clock::now();
+        chrono::duration<double, milli> ms = t2-t1;
+        cout << "reduce: result" << result << "took "
+            <<ms.count() <<"ms" << endl;
+    }
+    ////////////////////////////////////////////////////////////////
     PrintfData(A());
     A a;
     PrintfData(a);
     array arrtest{0,1,2,3,4,5,6,7};
     vector vectest{923,32,234,3423};
+    swap(vectest[0], vectest[1]);
     string s("hi\0world");
     cout << s << endl;
     cout << "hi\0word"s << "hi\0word"s.size() << endl;
-
+    
     unsigned mask = 0b111'000'000;
     
-    // vector<string> dirTreeLines = ReadCountedLines();
-    // Solution solu;
-    // auto delDirs = solu.DelAllDirectorys(dirTreeLines);
-    // WriteVector(delDirs);
     //////////////////////////////////////////////////////////////////
-    //int n = 0;
-    //std::cin >> n;
-    // std::vector<int> nums;
-    // while (n--)
-    // {
-    //     int m = 0;
-    //     std::cin >> m;
-    //     nums.push_back(m);
-    // }
     // cout << bitset<sizeof(int) * 8>(1) << endl;
     // std::cout << GetMinStep(nums);
     // set<char> init_res;
