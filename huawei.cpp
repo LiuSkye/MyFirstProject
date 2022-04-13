@@ -21,6 +21,8 @@
 #include <bitset>
 #include <numeric>
 #include <execution>
+#include <fstream>
+
 using namespace std;
 
 struct TreeNode
