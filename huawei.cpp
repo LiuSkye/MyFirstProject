@@ -20,9 +20,10 @@
 #include <utility>
 #include <bitset>
 #include <numeric>
-#include <execution>
+// #include <execution>
 #include <fstream>
-
+#include <sstream>
+#include "LeetCode/printf_tools.h"
 using namespace std;
 
 struct TreeNode
@@ -501,9 +502,72 @@ int BinaryToDecimal(const string &binaryString)
     return result;
 }
 
+vector<int> huaweiSolver(const vector<vector<int>>& input, const vector<int>& request) {
+    // cpuCount  memory  cpuArch  NP
+    auto Is_Valid = [&](const vector<int>& computer)->bool {
+        if(request[2] > computer[0] || request[3] > computer[1]) {
+            return false;
+        }
+        if(computer[2] != request[4] && request[4] != 9) {
+            return false;
+        }
+        if(computer[3] != request[5] && request[5] != 2) {
+            return false;
+        }
+        return true;
+    };
+    auto strategy1 = [&](int a, int b)->bool {
+        if(input[a][0] < input[b][0])
+            return true;
+        if(input[a][0] == input[b][0])
+            return input[a][1] < input[b][1];
+        return false;
+    };
+    auto strategy2 = [&](int a, int b)->bool {
+        if(input[a][1] < input[b][1])
+            return true;
+        if(input[a][1] == input[b][1])
+            return input[a][0] < input[b][0];
+        return false;
+    };
+    
+    // 最大分配数量N 、策略
+    vector<int> result;
+    for(int i = 0; i < input.size(); ++i) {
+        if(Is_Valid(input[i])) {
+            result.push_back(i);
+        }
+    }
+    if(request[1] == 1)
+        sort(result.begin(), result.end(), strategy1);
+    else 
+        sort(result.begin(), result.end(), strategy2);
+    if(result.size() > request[0]) {
+        result.resize(request[0]);
+    }
+    sort(result.begin(), result.end());
+    return result;
+}
+
+int BinarySearchLowerBound(const vector<int>& nums, int target) {
+    int left = 0;
+    int right = nums.size() - 1;
+    while(left <= right) {
+        int mid = left + (right - left)/2;
+        if(nums[mid] < target) {
+            left = mid + 1;
+        }
+        else if(nums[mid] >= target) {
+            right = mid - 1;
+        }
+    }
+    return left;
+}
+
 int main()
 {
-
+    double aaa = 4.00000000;
+    cout << aaa << endl;
     // string inputStr;
     // getline(cin, inputStr);
     // int result = 0;
@@ -525,12 +589,12 @@ int main()
             <<ms.count() <<"ms" << endl;
     }
     {
-        auto t1 = chrono::high_resolution_clock::now();
-        double result = reduce(execution::par, v.begin(), v.end());
-        auto t2 = chrono::high_resolution_clock::now();
-        chrono::duration<double, milli> ms = t2-t1;
-        cout << "reduce: result" << result << "took "
-            <<ms.count() <<"ms" << endl;
+        // auto t1 = chrono::high_resolution_clock::now();
+        // double result = reduce(execution::par, v.begin(), v.end());
+        // auto t2 = chrono::high_resolution_clock::now();
+        // chrono::duration<double, milli> ms = t2-t1;
+        // cout << "reduce: result" << result << "took "
+        //     <<ms.count() <<"ms" << endl;
     }
     ////////////////////////////////////////////////////////////////
     PrintfData(A());
@@ -553,7 +617,36 @@ int main()
     // for_each(init_res.begin(), init_res.end(), [&](char it)
     //          { result.push_back(it); });
     ///////////////////////////////////////////////////////////////////
-
+    // ifstream in("D:/liusk.txt");
+    // string line;
+    // vector<double> nums;
+    // stringstream ls;
+    // while(getline(in, line)) {
+    //     string word;
+    //     ls.str(line);
+    //     while(getline(ls, word, ',')) {
+    //         double num{};
+    //         num = stod(word);
+    //         nums.push_back(num);    
+    //     }
+    //     ls.clear();
+    // }
+    // in.close();
+    vector<vector<int>> input{{2,200,0,1},
+                              {4,330,2,1},
+                              {3,400,3,1},
+                              {3,310,1,1},
+                              {3,320,8,1},
+                              {3,330,0,1}};
+    vector<vector<int>> input2{{2,200,0,1},
+                            {3,400,0,1},
+                            {3,400,1,0},
+                            {3,300,0,1}};
+    vector<int> request{3,2,3,300,9,2};
+    vector<int> request2{3,1,3,200,0,1};
+    auto ret = huaweiSolver(input2, request2);
+    PrintfVec(ret);
     //Solve25();
+
     return 0;
 }
