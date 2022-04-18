@@ -564,19 +564,33 @@ int BinarySearchLowerBound(const vector<int>& nums, int target) {
     return left;
 }
 
+int GetMinPeople(int questionsCount, int peopleCount, const vector<pair<int, int>>& correctRanges)
+{
+    vector<int> start_maxlength(questionsCount + 1);
+    for(auto& range : correctRanges) {
+        start_maxlength[range.first] = max(start_maxlength[range.first], range.second);
+    }
+    int people_num = 0;
+    int can_arrive = 1;
+    int cur_pos = 1;
+    while(can_arrive <= questionsCount) {
+        int right = can_arrive;
+        for(int i = cur_pos; i <= right; i++) {
+            can_arrive = max(can_arrive, start_maxlength[i] + 1);
+        }
+        if(right == can_arrive) {
+            return -1;
+        }
+        cur_pos = right;
+        people_num++;
+    }
+    return people_num;
+}
+
 int main()
 {
-    double aaa = 4.00000000;
-    cout << aaa << endl;
-    // string inputStr;
-    // getline(cin, inputStr);
-    // int result = 0;
-    // bool isOk = Calculate2(inputStr, result);
-    // if (isOk) {
-    //     cout << result;
-    // } else {
-    //     cout << "error";
-    // }
+    vector<pair<int, int>> ranges{{1,2},{2,5},{1,6},{6,9},{5,7},{6,9},{8,10}};
+    cout << GetMinPeople(10, 7, ranges);
     ////////////////////////////////////////////////////////////////
     // 并行执行
     vector<double> v(10000000, 0.0625);
