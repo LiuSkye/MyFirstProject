@@ -23,6 +23,7 @@
 // #include <execution>
 #include <fstream>
 #include <sstream>
+#include <math.h>
 #include "LeetCode/printf_tools.h"
 using namespace std;
 
@@ -586,11 +587,77 @@ int GetMinPeople(int questionsCount, int peopleCount, const vector<pair<int, int
     }
     return people_num;
 }
+string GetHexString(long long input)
+{
+    if(input < INT_MIN || input > UINT32_MAX) {
+        return "overflow";
+    }
+    bitset<32> bin_input(input);
+    string hex_input{"00 00 00 00"};
+    int j = hex_input.size() - 1;
+    for(int i = 0; i < bin_input.size(); i += 4) {
+        int dec = bin_input[i] + bin_input[i+1] * 2 +
+                  bin_input[i+2] * 4 + bin_input[i+3] * 8;
+        hex_input[j--] = (dec < 10) ? ('0' + dec) : ('A' + dec - 10);
+        if(j == 2 || j == 5 || j == 8) { // 跳过空格
+            --j;
+        }
+    }
+    string result;
+    result.append(hex_input);
+    result.append(1, '\n');
+    // 转换成小端字节序
+    swap(hex_input[0], hex_input[9]);
+    swap(hex_input[1], hex_input[10]);
+    swap(hex_input[3], hex_input[6]);
+    swap(hex_input[4], hex_input[7]);
+    result.append(hex_input);
+    return result;
+}
 
+size_t GetIpCount(const std::string& numChars)
+{
+    vector<int> nums(10);
+    for(char c : numChars) {
+        nums[c - '0'] = 1;
+    }
+    int count = accumulate(nums.begin(), nums.end(), 0);
+    size_t valid_num = 0;
+    int first_bit = 0;
+    if(nums[0] == 0) {
+        valid_num += count;
+    }
+    valid_num += count*count;
+    if(nums[1] == 1) {
+        valid_num += count*count;
+    }
+    int less_five = nums[0] + nums[1] + nums[2] + nums[3] + nums[4];
+    if(nums[2] == 1) {
+        valid_num += less_five*count;
+        if(nums[5] == 1) {
+            valid_num += less_five + nums[5];
+        }
+    }
+    return pow(valid_num, 4);
+}
+vector<string> GetAllFault(const vector<string> &arrayA, const vector<string> &arrayB)
+{
+    set<string> visited;
+    vector<string> result;
+    for(const string& warn : arrayA) {
+        visited.insert(warn);
+    }
+    for(const string& warn : arrayB) {
+        visited.insert(warn);
+    }
+    for_each(visited.begin(), visited.end(), [&](const string& warn){
+        result.emplace_back(warn);
+    });
+    return result;
+}
 int main()
 {
-    vector<pair<int, int>> ranges{{1,2},{2,5},{1,6},{6,9},{5,7},{6,9},{8,10}};
-    cout << GetMinPeople(10, 7, ranges);
+    cout << (int)'0' << endl;
     ////////////////////////////////////////////////////////////////
     // 并行执行
     vector<double> v(10000000, 0.0625);
