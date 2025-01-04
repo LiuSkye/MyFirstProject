@@ -1,5 +1,10 @@
 build/*
-.*
+# .*
 .vscode/*
+
+*.d
+*.o
+*.exe
+rust_project/target/*
 
 !.gitignore
