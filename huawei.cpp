@@ -38,19 +38,41 @@ public:
     {
     }
 
-    bool check_start(int startTime) {
-        for (size_t i = 0; i < _records.size(); ++i) {
-            
-        }
+    bool is_overlap(int startTime, int endTime, const pair<int, int>& book)
+    {
+        // [a, b) [c, d): b > c && a < d
+        return book.first < endTime && book.second > startTime;
     }
 
+    bool is_overlap(int startTime, int endTime)
+    {
+        for (auto& book : _overlaps) {
+            // [a, b) [c, d): b > c && a < d
+            if (is_overlap(startTime, endTime, book)) {
+                return true;
+            }
+        }
+        return false;
+    }
     bool book(int startTime, int endTime)
     {
+        if (is_overlap(startTime, endTime)) {
+            return false;
+        }
 
+        for (const auto& book : _books) {
+            if (is_overlap(startTime, endTime, book)) {
+                _overlaps.push_back({ max(book.first, startTime), min(book.second, endTime) });
+            }
+        }
+        _books.push_back({ startTime, endTime });
+        return true;
     }
 
 private:
-    vector<Record> _records;
+    // vector<Record> _records;
+    vector<pair<int, int>> _books;
+    vector<pair<int, int>> _overlaps;
 };
 
 int main()
