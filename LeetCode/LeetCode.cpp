@@ -8,90 +8,86 @@
 
 // #define CRTDBG_MAP_ALLOC
 
-#include "solution.h"
-#include "printf_tools.h"
 #include "BinarySearchTree.h"
-#include "test.h"
 #include "SortAlgorithm.h"
 #include "ThreadPool.h"
+#include "printf_tools.h"
+#include "solution.h"
+#include "test.h"
 
 #include <string>
 // #include <Windows.h>
 // #include <crtdbg.h>
-#include <map>
-#include <functional>
-#include <bitset>
 #include <algorithm>
-#include <cstdio>
 #include <array>
+#include <bitset>
+#include <cstdio>
+#include <functional>
 #include <iostream>
+#include <map>
 
-struct Info
-{
+struct Info {
     void Print()
     {
         printf("%s,%s,%u\n", &a, &b, &c);
     }
     uint8_t a;
     uint8_t b;
-    uint32_t c; //相对结构体首地址的偏移是自身大小的整数倍
+    uint32_t c; // 相对结构体首地址的偏移是自身大小的整数倍
 };
 
-struct Info2
-{
+struct Info2 {
     Info info;
     double b;
 };
 
 int countVowelPermutation(int n)
 {
-    function<int(int)> calK = [&](int m)
-    {
+    function<int(int)> calK = [&](int m) {
         // 计算以i结尾的可能长m序列数，
         if (m == 1)
             return 2;
         return 1;
     };
-    function<int(int, int)> CalIPos = [&](int m, int start)
-    {
+    function<int(int, int)> CalIPos = [&](int m, int start) {
         // 用m个i将序列分为m+1段, 最小间隔1
         // 第一段和最后一段长度可以为0
-        if(m == 0) {
-            if(start <= n) {
+        if (m == 0) {
+            if (start <= n) {
                 return 4;
             } else {
                 return 1;
             }
         }
-        if(start >= n) {
+        if (start >= n) {
             return 0;
         }
         int res = 0;
-        for(int i = start; i < n; i++) {
-            res += calK(i - start) * CalIPos(m-1, i+2);
+        for (int i = start; i < n; i++) {
+            res += calK(i - start) * CalIPos(m - 1, i + 2);
         }
         return res;
     };
     int ret = 4;
     // 最多（n+1）/2个i
-    for (int num_i = 1; num_i <= (n + 1) / 2; ++num_i)
-    {
+    for (int num_i = 1; num_i <= (n + 1) / 2; ++num_i) {
         ret += CalIPos(num_i, 0);
     }
-    CalIPos(1,1);
+    CalIPos(1, 1);
     return ret;
 }
+
 int main()
 {
     countVowelPermutation(3);
-    vector<int> houses{1, 2, 3};
-    vector<int> heater{2};
+    vector<int> houses { 1, 2, 3 };
+    vector<int> heater { 2 };
 
-    vector<int> nums1{1, 7, 5};
-    vector<int> nums2{2, 3, 5};
+    vector<int> nums1 { 1, 7, 5 };
+    vector<int> nums2 { 2, 3, 5 };
     // cout << minAbsoluteSumDiff(nums1, nums2) << endl;
     using std::vector;
-    vector<int> data{9, 8, 7, 2, 5, 4, 5, 2, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> data { 9, 8, 7, 2, 5, 4, 5, 2, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     MakeHeap(data);
 
     // ThreadPool pool(1);
@@ -113,32 +109,32 @@ int main()
 
     Solution solution;
     string big("mississippi");
-    vector<string> smalls{"is", "ppi", "hi", "sis", "i", "ssippi"};
+    vector<string> smalls { "is", "ppi", "hi", "sis", "i", "ssippi" };
     solution.multiSearch(big, smalls);
 
     XCIs<string, Vec> myVec;
 
-    vector<int> te{3, 1, 2, 5, 4, 8, 6, 7, 0};
+    vector<int> te { 3, 1, 2, 5, 4, 8, 6, 7, 0 };
 
     MergeSort(te);
     PrintfVec(te);
-    //return 0;
-    
+    // return 0;
+
     int a = -1;
     unsigned int b = (unsigned int)a;
     cout << bitset<32>(a) << "," << bitset<32>(b) << endl;
     unsigned int c = static_cast<unsigned int>(a);
     cout << bitset<32>(c) << endl;
 
-    const int *sptr = &TestStaticConst::data;
+    const int* sptr = &TestStaticConst::data;
     TestStaticConst tsc;
     cout << tsc.db << tsc.dd << endl;
     cout << TestStaticConst::dd << endl;
 
-    Solution *ptr = nullptr;
+    Solution* ptr = nullptr;
     cout << &ptr;
 
-    vector<int> nn{5, 7, 7, 8, 8, 10};
+    vector<int> nn { 5, 7, 7, 8, 8, 10 };
     auto iter = upper_bound(nn.begin(), nn.end(), 6);
     auto iter2 = lower_bound(nn.begin(), nn.end(), 6);
     cout << iter - iter2 << endl;
@@ -162,13 +158,13 @@ int main()
     // delete[] str; //没有内存泄漏
     // cout << temp << endl;
     //////////////////////////////////////
-    int arr[8] = {1, 2, 3, 4, 5, 6, 7};
-    int *p = arr;
+    int arr[8] = { 1, 2, 3, 4, 5, 6, 7 };
+    int* p = arr;
     p++;
     cout << *(p + 1) * (p + 1)[2] << endl;
 
     // system("pause");
-    int *nums = new int[20];
+    int* nums = new int[20];
     // _CrtDumpMemoryLeaks();
     return 0;
 }

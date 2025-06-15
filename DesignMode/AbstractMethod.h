@@ -1,88 +1,68 @@
 #include <vector>
 using namespace std;
 
-class IDBConnection
-{
-
+class IDBConnection {
 };
 
-class IDBCommand
-{
-
+class IDBCommand {
 };
 
-class IDataReader
-{
-
+class IDataReader {
 };
 
-class IDBFactory
-{
+class IDBFactory {
 public:
-    virtual IDBConnection* CreateDBConnection()=0;
-    virtual IDBCommand* CreateDBCommand()=0;
-    virtual IDataReader* CreateDataReader()=0;
-
+    virtual IDBConnection* CreateDBConnection() = 0;
+    virtual IDBCommand* CreateDBCommand() = 0;
+    virtual IDataReader* CreateDataReader() = 0;
 };
 
-class SqlConnection:public IDBConnection
-{
-
+class SqlConnection : public IDBConnection {
 };
 
-class SqlCommand:public IDBCommand
-{
-
+class SqlCommand : public IDBCommand {
 };
 
-class SqlDataReader:public IDataReader
-{
-
+class SqlDataReader : public IDataReader {
 };
 
-class SqlDBFactory:public IDBFactory
-{
+class SqlDBFactory : public IDBFactory {
 public:
-    virtual IDBConnection* CreateDBConnection()=0;
-    virtual IDBCommand* CreateDBCommand()=0;
-    virtual IDataReader* CreateDataReader()=0;
+    virtual IDBConnection* CreateDBConnection() = 0;
+    virtual IDBCommand* CreateDBCommand() = 0;
+    virtual IDataReader* CreateDataReader() = 0;
 };
 
-//支持Oracle
-class OracleConnection: public IDBConnection{
-    
+// 支持Oracle
+class OracleConnection : public IDBConnection {
 };
 
-class OracleCommand: public IDBCommand{
-    
+class OracleCommand : public IDBCommand {
 };
 
-class OracleDataReader: public IDataReader{
-    
+class OracleDataReader : public IDataReader {
 };
 
-class OracleDBFactory:public IDBFactory
-{
+class OracleDBFactory : public IDBFactory {
 public:
-    virtual IDBConnection* CreateDBConnection()=0;
-    virtual IDBCommand* CreateDBCommand()=0;
-    virtual IDataReader* CreateDataReader()=0;
+    virtual IDBConnection* CreateDBConnection() = 0;
+    virtual IDBCommand* CreateDBCommand() = 0;
+    virtual IDataReader* CreateDataReader() = 0;
 };
 
-class EmployeeDAO{
+class EmployeeDAO {
     IDBFactory* dbFactory;
-    
+
 public:
-    vector<EmployeeDAO> GetEmployees(){
-        IDBConnection* connection =
-            dbFactory->CreateDBConnection();
-        //connection->ConnectionString("...");
+    vector<EmployeeDAO> GetEmployees()
+    {
+        IDBConnection* connection = dbFactory->CreateDBConnection();
+        // connection->ConnectionString("...");
 
-        IDBCommand* command =
-            dbFactory->CreateDBCommand();
-        //command->CommandText("...");
-        //command->SetConnection(connection); //关联性
+        IDBCommand* command = dbFactory->CreateDBCommand();
+        // command->CommandText("...");
+        // command->SetConnection(connection); //关联性
 
-        //IDBDataReader* reader = command->ExecuteReader(); //关联性
+        // IDBDataReader* reader = command->ExecuteReader(); //关联性
     }
 };

@@ -6,32 +6,30 @@
  * Skye:'Never stop!'
  */
 
-#include <deque>
-#include <mutex>
-#include <functional>
-#include <condition_variable>
-#include <thread>
-#include <atomic>
-#include <iostream>
 #include <assert.h>
+#include <atomic>
+#include <condition_variable>
+#include <deque>
+#include <functional>
+#include <iostream>
+#include <mutex>
+#include <thread>
 
 #include <semaphore.h>
 
 using namespace std;
-class NonCopyable
-{
+class NonCopyable {
 protected:
-    NonCopyable() {}
-    ~NonCopyable() {}
+    NonCopyable() { }
+    ~NonCopyable() { }
 
 private:
-    NonCopyable(const NonCopyable &) = delete;
-    NonCopyable &operator=(const NonCopyable &) = delete;
+    NonCopyable(const NonCopyable&) = delete;
+    NonCopyable& operator=(const NonCopyable&) = delete;
 };
 
 typedef function<void()> Task;
-class ThreadPool : public NonCopyable
-{
+class ThreadPool : public NonCopyable {
 public:
     explicit ThreadPool(int max_task_size, int thread_num = 8)
     {
@@ -42,16 +40,15 @@ public:
     }
     ~ThreadPool()
     {
-        //回收线程
+        // 回收线程
         Stop();
-        for (int i = 0; i < _threads.size(); ++i)
-        {
+        for (int i = 0; i < _threads.size(); ++i) {
             _threads[i]->join();
             cout << "thread:" << i << "stop" << endl;
             delete _threads[i];
         }
     }
-    
+
     void Start()
     {
         _is_run = true;
@@ -66,14 +63,13 @@ public:
 
     bool AddTask(Task task)
     {
-        //如果满了会阻塞或者返回false
+        // 如果满了会阻塞或者返回false
         unique_lock<mutex> mtx(_mtx);
         // while (_tasks.size() >= _max_size)
         // {
         //     _cond_is_full.wait(mtx);
         // }
-        if (_tasks.size() >= _max_size)
-        {
+        if (_tasks.size() >= _max_size) {
             return false;
         }
         _tasks.push_back(move(task));
@@ -85,15 +81,12 @@ public:
 private:
     void Init(int num)
     {
-        while (num--)
-        {
-            _threads.emplace_back(new thread([&]{
+        while (num--) {
+            _threads.emplace_back(new thread([&] {
                 unique_lock<mutex> locker(_mtx);
-                while (_is_run)
-                {
+                while (_is_run) {
                     // 检查是否为空，加锁，取任务
-                    if (!_tasks.empty())
-                    {
+                    if (!_tasks.empty()) {
                         auto task = std::move(_tasks.front());
                         _tasks.pop_front();
                         locker.unlock();
@@ -101,9 +94,7 @@ private:
                         cout << "solve a task" << endl;
                         // 抢锁准备去取下一个任务
                         locker.lock();
-                    }
-                    else
-                    {
+                    } else {
                         _cond_is_empty.wait(locker);
                     }
                 }
@@ -115,13 +106,12 @@ private:
     deque<Task> _tasks;
     int _max_size;
     mutex _mtx;
-    //condition_variable _cond_is_full;
+    // condition_variable _cond_is_full;
     condition_variable _cond_is_empty;
-    vector<thread *> _threads;
+    vector<thread*> _threads;
     int _thread_num;
     atomic<bool> _is_run;
 };
-
 
 /////////////////////////////////////////////////////////////////
 /**
@@ -129,25 +119,27 @@ private:
  * @param {*}
  * @return {*}
  */
-template<typename T>
-class TaskQueue: public NonCopyable
-{
+template <typename T>
+class TaskQueue : public NonCopyable {
 public:
-    TaskQueue(int capacity = 30) : _capacity(capacity), _task_que(capacity) {
+    TaskQueue(int capacity = 30)
+        : _capacity(capacity)
+        , _task_que(capacity)
+    {
         sem_init(&_sem_empty, 0, _capacity);
         sem_init(&_sem_full, 0, 0);
-
     }
-    ~TaskQueue() {
-        //释放资源
+    ~TaskQueue()
+    {
+        // 释放资源
         sem_destroy(&_sem_empty);
         sem_destroy(&_sem_full);
     }
 
     T Consume()
     {
-        //先检查再上锁
-        sem_wait(&_sem_full);//原子操作
+        // 先检查再上锁
+        sem_wait(&_sem_full); // 原子操作
         lock_guard<mutex> locker(_mtx);
 
         auto task = move(_task_que.front());
@@ -161,7 +153,7 @@ public:
     {
         sem_wait(&_sem_empty);
         lock_guard<mutex> locker(_mtx);
-        
+
         _task_que.push_back(move(task));
         sem_post(&_sem_full);
     }
@@ -185,22 +177,22 @@ private:
  * @param {*}
  * @return {*}
  */
-template<typename T>
-class BoundedBlockingQueue:public NonCopyable
-{
+template <typename T>
+class BoundedBlockingQueue : public NonCopyable {
 public:
     explicit BoundedBlockingQueue(int max_size)
-        :_mtx(),_queue(max_size)
+        : _mtx()
+        , _queue(max_size)
     {
     }
-    
-    void Push(const T &x){
+
+    void Push(const T& x)
+    {
         unique_lock<mutex> locker(_mtx);
-        while(_queue.size() >= _max_size)
-        {
+        while (_queue.size() >= _max_size) {
             _cond_full.wait(locker);
         }
-        assert(_queue.size()>=_max_size);
+        assert(_queue.size() >= _max_size);
         _queue.push_back(x);
         _cond_empty.notify_one();
     }
@@ -208,8 +200,7 @@ public:
     T Take()
     {
         unique_lock<mutex> locker(_mtx);
-        while(_queue.empty())
-        {
+        while (_queue.empty()) {
             _cond_empty.wait(locker);
         }
         auto front = move(_queue.front());

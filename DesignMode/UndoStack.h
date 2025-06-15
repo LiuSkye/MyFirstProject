@@ -7,26 +7,25 @@
  */
 #pragma once
 
+#include <assert.h>
+#include <deque>
+#include <functional>
+#include <memory>
+#include <mutex>
 #include <string>
 #include <vector>
-#include <deque>
-#include <memory>
-#include <functional>
-#include <mutex>
-#include <assert.h>
 
 // 记录状态的节点：如xml节点
 class UndoRedoStack;
-class ProjectNode
-{
+class ProjectNode {
 public:
-    bool AddData(const std::string &str = "A")
+    bool AddData(const std::string& str = "A")
     {
         //_data.append(str);
         _data += "A";
         return true;
     }
-    bool DeleteData(const std::string &str = "A")
+    bool DeleteData(const std::string& str = "A")
     {
         _data.pop_back();
         return true;
@@ -42,8 +41,7 @@ public:
 };
 
 // 动作类型
-enum ActionType
-{
+enum ActionType {
     Action_ADD = 0,
     Action_DELETE,
     Action_Modify,
@@ -54,12 +52,17 @@ enum ActionType
 
 // 命令模式实现
 // 动作类型
-class Action
-{
+class Action {
 public:
-    Action(ActionType type, int id, const std::string &desc, std::shared_ptr<ProjectNode> obj, const std::function<bool()> &command)
-        : _type(type),_id(id), _description(desc), _object(obj), _command(command) {}
-    virtual ~Action(){};
+    Action(ActionType type, int id, const std::string& desc, std::shared_ptr<ProjectNode> obj, const std::function<bool()>& command)
+        : _type(type)
+        , _id(id)
+        , _description(desc)
+        , _object(obj)
+        , _command(command)
+    {
+    }
+    virtual ~Action() { };
 
     bool Excute()
     {
@@ -74,17 +77,16 @@ public:
     std::string _data;
 };
 
-class UndoRedoStack
-{
+class UndoRedoStack {
 public:
     UndoRedoStack()
-        : _max_act_size(20),
-          _undoPos(-1),
-          _is_in_act(false),
-          _act_id(-1)
+        : _max_act_size(20)
+        , _undoPos(-1)
+        , _is_in_act(false)
+        , _act_id(-1)
     {
     }
-    virtual ~UndoRedoStack() {}
+    virtual ~UndoRedoStack() { }
 
 public:
     void SetMaxActSize(int size)
@@ -97,8 +99,7 @@ public:
     // 开始一个命令
     void BeginAnAction(std::string desc, std::shared_ptr<Action> act)
     {
-        if (IsInAction())
-        {
+        if (IsInAction()) {
             assert(!"UndoRedoStack: 前一个命令尚未结束！");
             return;
         }
@@ -107,15 +108,12 @@ public:
         _act_description = desc;
     }
 
-    void EndAnAction(const std::string &desc = "") //非常量引用的初始值必须为左值，常量引用是万能引用，可以用右值初始化
+    void EndAnAction(const std::string& desc = "") // 非常量引用的初始值必须为左值，常量引用是万能引用，可以用右值初始化
     {
-        if (IsInAction())
-        {
+        if (IsInAction()) {
             _is_in_act = false;
-            if (!_act_description.empty())
-            {
-                for (int i = (int)_actionStack.size() - 1; i >= 0; --i)
-                {
+            if (!_act_description.empty()) {
+                for (int i = (int)_actionStack.size() - 1; i >= 0; --i) {
                     // 将这一动作包含的全部命令更改为命令结束描述
                     std::shared_ptr<Action> act = _actionStack[i];
                     if (act->_id != _act_id)
@@ -129,37 +127,30 @@ public:
 
     bool Undo()
     {
-        if (IsInAction())
-        {
+        if (IsInAction()) {
             assert(!"UndoRedoStack: 正在命令动作中，不应撤销重做！");
             EndAnAction();
         }
-        if (_undoPos <= 0) //已经撤销到底了
+        if (_undoPos <= 0) // 已经撤销到底了
         {
             return false;
-        }
-        else if (_undoPos > _actionStack.size())
-        {
+        } else if (_undoPos > _actionStack.size()) {
             assert(!"严重错误！");
             _undoPos = (int)_actionStack.size();
             return false;
         }
         const int act_id = _actionStack[_undoPos - 1]->_id;
-        for (int index = _undoPos - 1; index >= 0; --index)
-        {
+        for (int index = _undoPos - 1; index >= 0; --index) {
             std::shared_ptr<Action> act = _actionStack[index];
-            if (act->_id != act_id)
-            {
+            if (act->_id != act_id) {
                 // 回撤结束
                 break;
             }
 
-            if (act->Excute())
-            {
+            if (act->Excute()) {
                 --_undoPos;
                 return true;
-            }
-            else
+            } else
                 return false;
             // bool rtvalue = false;
             // switch (act->_type)
@@ -182,52 +173,42 @@ public:
 
     bool Redo()
     {
-        if (IsInAction())
-        {
+        if (IsInAction()) {
             assert(!"UndoRedoStack: 正在命令动作中，不应撤销重做！");
             EndAnAction();
         }
-        if (_undoPos < 0)
-        {
+        if (_undoPos < 0) {
             return false;
-        }
-        else if (_undoPos >= _actionStack.size())
-        {
+        } else if (_undoPos >= _actionStack.size()) {
             assert(!"严重错误！");
             _undoPos = (int)_actionStack.size();
             return false;
         }
         const int act_id = _actionStack[_undoPos]->_id;
-        for (int index = _undoPos; index < _actionStack.size(); ++index)
-        {
+        for (int index = _undoPos; index < _actionStack.size(); ++index) {
             auto act = _actionStack[index];
-            if (act->_id != act_id)
-            {
+            if (act->_id != act_id) {
                 break;
             }
-            if(act->_type == Action_ADD)
-            {
+            if (act->_type == Action_ADD) {
                 act->_object->AddData();
                 ++_undoPos;
                 return true;
-            }
-            else if(act -> _type == Action_DELETE){
+            } else if (act->_type == Action_DELETE) {
                 act->_object->DeleteData();
                 ++_undoPos;
                 return true;
-            }
-            else
+            } else
                 return false;
         }
         return true;
     }
 
-    void Push(const std::shared_ptr<Action> &act)
+    void Push(const std::shared_ptr<Action>& act)
     {
         _actionStack.push_back(act);
         ++_undoPos;
-        if (_actionStack.size() > _max_act_size)
-        {
+        if (_actionStack.size() > _max_act_size) {
             _actionStack.pop_front();
             --_undoPos;
         }
@@ -237,7 +218,7 @@ public:
     bool (ProjectNode::*ptr)(const string&) = &ProjectNode::DeleteData;
     void ActionAddNode(std::shared_ptr<ProjectNode> node)
     {
-        std::shared_ptr<Action> act(new Action(Action_ADD, CreateUniqueId(), "Add", node, std::bind(ptr, node , "A")));
+        std::shared_ptr<Action> act(new Action(Action_ADD, CreateUniqueId(), "Add", node, std::bind(ptr, node, "A")));
         Push(act);
     }
     void ActionDeleteNode(std::shared_ptr<ProjectNode> node)
@@ -268,5 +249,5 @@ private:
     int _act_id;
     std::string _act_description;
 
-    //int _last_save_pos;
+    // int _last_save_pos;
 };

@@ -1,6 +1,5 @@
-template<class type>
-class Foo
-{
+template <class type>
+class Foo {
 public:
     Foo();
     type val();
@@ -9,4 +8,3 @@ public:
 private:
     type _val;
 };
-
